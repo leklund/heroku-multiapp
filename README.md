@@ -8,9 +8,13 @@ for example:
 
 will run `heroku info` for all heroku apps on your account.
 
+`heroku multiapp info --account myaccount --multiapps app1,app2`
+
+will run for only the two apps in the comma separated list passed to the 
+multiapps options.
+
 ##TODO
 
-* add global option `--apps` that will take a list of apps rather then running over all apps
 * other option to implement might be `--exclude-apps` and `--dry-run`
 * some documentation might be nice
 
