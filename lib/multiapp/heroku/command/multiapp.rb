@@ -3,16 +3,10 @@ require 'heroku/command/base'
 class Heroku::Command::Multiapp < Heroku::Command::Base
   def index
     apps = api.get_apps.body
-    args = ARGV
-    args.shift
+    args = ARGV[1..-1]
     cmd = args.shift
     apps.each do |app|
-      argz = getargs(app["name"],args.dup)
-      Heroku::Command.run(cmd, argz)
+      Heroku::Command.run(cmd, args + ['--app',app["name"]])
     end
-  end
-
-  def getargs(app='',args)
-    args.concat(['--app',app])
   end
 end
